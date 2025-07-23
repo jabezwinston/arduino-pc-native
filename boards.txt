@@ -1,0 +1,12 @@
+# PC simulator
+pcsim.name=PC simulator
+
+pcsim.upload.tool=none
+pcsim.upload.protocol=runtime
+
+pcsim.bootloader.tool=none
+
+pcsim.build.mcu=native
+pcsim.build.board=PCSIM
+pcsim.build.core=pcsim
+pcsim.build.variant=standard
