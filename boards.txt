@@ -3,6 +3,8 @@ pcsim.name=PC simulator
 
 pcsim.upload.tool=none
 pcsim.upload.protocol=runtime
+pcsim.upload.params.verbose=
+pcsim.upload.pattern={build.path}/{build.project_name}.elf
 
 pcsim.bootloader.tool=none
 

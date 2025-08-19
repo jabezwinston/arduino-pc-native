@@ -21,15 +21,12 @@
   Boston, MA  02111-1307  USA
 */
 
-extern "C" {
-  #include "stdlib.h"
-}
+#include <stdlib.h>
 
-void randomSeed(unsigned long seed)
-{
-  if (seed != 0) {
-    srandom(seed);
-  }
+
+// Replace macro with actual function for zero-argument case
+long random() {
+  return rand();
 }
 
 long random(long howbig)
@@ -37,7 +34,7 @@ long random(long howbig)
   if (howbig == 0) {
     return 0;
   }
-  return random() % howbig;
+  return rand() % howbig;
 }
 
 long random(long howsmall, long howbig)

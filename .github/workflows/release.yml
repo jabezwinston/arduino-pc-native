@@ -16,14 +16,24 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          python -m pip install requests
 
       - name: Run release script
         run: python release.py
+
+      - name: Update package index with new version
+        run: |
+          python -c "
+          import sys
+          sys.path.append('.')
+          from release import update_package_index_only
+          update_package_index_only()
+          "
 
       - name: Find generated files
         id: find_files
@@ -39,5 +49,7 @@ jobs:
           files: |
             ${{ steps.find_files.outputs.PACKAGE_JSON }}
             ${{ steps.find_files.outputs.ZIP_FILE }}
+          body: |
+            ## Arduino PC-Native Board Package ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
